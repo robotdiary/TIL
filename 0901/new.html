@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class='text-center m-5'>방명록</h1>
+<div class="justify-content-center mb-2">
+  <form action="{% url 'melons:create' %}" method="GET">
+    <div class="m-4">
+      <label for="person">작성자 : </label>
+      <input type="text" name="person"><br>
+    </div>
+    <div class="m-4">
+      <label for="title">제목 : </label>
+      <input type="text" name="title"><br>
+    </div>
+    <div class="m-4">
+      <label for="content">내용 : </label>
+      <textarea type="text" name="content"></textarea>
+    </div>
+    <input type="submit" value="작성하기" class="btn btn-outline-secondary mx-5">
+  </form>
+</div>
+<a class="m-2 mx-5" href="{% url 'melons:articles' %}">
+  <button type="button" class="btn btn-outline-secondary">취소</button>
+</a>
+{% endblock content %}

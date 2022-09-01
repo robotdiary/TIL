@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class='text-center m-5'>환영합니다</h1>
+<h>
+  <a class="m-4 bg-white fs-4" href="{% url 'melons:articles' %}">방명록</a>
+</h>
+<div class="card m-2" style="width: 50rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ article1.title }}</h5>
+    <p class="card-text">{{ article1.content }}</p>
+    <a class="m-2 card-link" href="{% url 'melons:details' article1.pk %}">
+        <button type="button" class="btn btn-outline-secondary">글 확인하기</button>
+    </a>
+    <a class="m-2 card-link" href="{% url 'melons:articles' %}">
+        <button type="button" class="btn btn-outline-secondary">게시판 바로가기</button>
+    </a>
+  </div>
+</div>
+<div class="card m-2" style="width: 50rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ article2.title }}</h5>
+      <p class="card-text">{{ article2.content }}</p>
+      <a class="m-2 card-link" href="{% url 'melons:details' article1.pk %}">
+        <button type="button" class="btn btn-outline-secondary">글 확인하기</button>
+    </a>
+    <a class="m-2 card-link" href="{% url 'melons:articles' %}">
+        <button type="button" class="btn btn-outline-secondary">게시판 바로가기</button>
+    </a>
+    </div>
+  </div>
+<div class="card m-2" style="width: 50rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ article3.title }}</h5>
+    <p class="card-text">{{ article3.content }}</p>
+    <a class="m-2 card-link" href="{% url 'melons:details' article1.pk %}">
+        <button type="button" class="btn btn-outline-secondary">글 확인하기</button>
+    </a>
+    <a class="m-2 card-link" href="{% url 'melons:articles' %}">
+        <button type="button" class="btn btn-outline-secondary">게시판 바로가기</button>
+    </a>
+  </div>
+</div>
+{% endblock content %}

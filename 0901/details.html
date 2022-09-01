@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class='text-center m-5'>DETAILS</h1>
+<h3 class="m-4">{{ article.pk }}번째 글</h3>
+<hr>
+<p class="fs-3 fw-bold mt-3 mx-5"> 제목 : {{ article.title }}</p>
+<p class="fs-3 mb-4 mt-3 mx-5"> 내용 : {{ article.content }}</p>
+<p class="fw-light mb-0 mx-3"> 작성자 : {{ article.person }}</p>
+<p class="fw-light mb-0 mx-3"> 작성 시각 : {{ article.created_at }}</p>
+<p class="fw-light mb-0 mx-3"> 수정 시각 : {{ article.updated_at }}</p>
+<hr>
+<div class="btn-group m-4" role="group" aria-label="Default button group">
+  <a class="m-2" href="{% url 'melons:articles' %}">
+    <button type="button" class="btn btn-outline-secondary">back</button>
+   </a>
+  <a class="m-2" href="{% url 'melons:edit' article.pk %}">
+    <button type="button" class="btn btn-outline-secondary">edit</button>
+  </a>
+  {% comment %} 모달 트리거 {% endcomment %}
+  <a class="m-2" href="#">
+    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">delete</button>
+  </a>
+</div>
+<br>
+
+{% comment %} 모달 {% endcomment %}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">정말 삭제 하시겠습니까?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>되돌릴 수 없습니다.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <form class="m-2" action="{% url 'melons:delete' article.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="delete" class="btn btn-outline-secondary">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
