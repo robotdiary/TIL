@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btn {
+      color: red;
+      background: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- lorem -->
+  <h2>수동 카운터</h2>
+  <!-- p.p1 -->
+  <p class="p1">0</p>
+  <button class="plusOne">하나씩 카운트</button>
+  <hr>
+  <h2>자동 카운터</h2>
+  <p class="p2">0</p>
+  <hr>
+  <h2 id="colorh2">색상 변환</h2>
+  <label for="change-color">원하는 색상을 입력 : </label>
+  <input type="text" id="change-color">
+  <hr>
+  <ul class="parent">
+    <li class="one">하나</li>
+    <li class="two">둘</li>
+    <li class="three">셋</li>
+    <button class="btn">색상을 반전해보자!</button>
+  </ul>
+
+  <script>
+    // 색 반전
+    const btn = document.querySelector('.btn')
+    btn.addEventListener('click', function () {
+      this.classList.toggle('btn')
+    }) // 여기의 this는 btn, classList.add/remove/toggle
+
+    // 추가하기
+    const ul = document.querySelector('ul')
+    const li0 = document.createElement('li')
+    li0.innerText = '사실 내가 처음'
+    ul.prepend(li0)
+
+    const liLast = document.createElement('li')
+    const liLast2 = document.createElement('li')
+    liLast.innerText = '마지막에 붙음'
+    liLast2.innerText = '마지막에 붙음2'
+    // ul.append(liLast, liLast2, '이게')
+    
+    const li2 = document.querySelector('.two')
+    li2.before(liLast)
+    li2.after(liLast2)
+
+    // 색상 변환
+    const colorInput = document.querySelector('#change-color')
+    const changeColor = function(event){
+      const h2Tag = document.querySelector('#colorh2')
+      h2Tag.style.color = event.target.value
+    }
+    colorInput.addEventListener('input', changeColor)
+
+    // 자동 카운터
+    const pTag2 = document.querySelector('.p2')
+    const autoplus = function () {
+      let autoCnt = parseInt(pTag2.innerText)
+      if (autoCnt < 900) {
+        autoCnt++
+        pTag2.innerText = autoCnt
+      } else {
+        clearInterval(interval)
+      }
+    }
+    // let 변수 = setInterval(실행하고 싶은 함수, 몇 초마다 할 건지) 1000이 1초, 2000이 2초
+    let interval = setInterval(autoplus, 1000)
+
+    // 수동카운터
+    const pTag1 = document.querySelector('.p1')
+    const plusOne = document.querySelector('.plusOne')
+    const plus = function () {
+      let cnt = parseInt(pTag1.innerText)
+      cnt++
+      pTag1.innerText = cnt
+    }
+    plusOne.addEventListener('click', plus)
+  </script>
+</body>
+</html>
