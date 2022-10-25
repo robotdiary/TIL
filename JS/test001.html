@@ -7,7 +7,35 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>안녕하세요?</h1>
-  <script src="test001.js"></script>
+  <ul class="switcher">
+    <li id="grayButton"></li>
+    <li id="whiteButton"></li>
+    <li id="navyButton"></li>
+  </ul>
+  
+  <h1>Theme Switcher</h1>
+  
+  <p>테마를 바꿔봅시다.</p>
+
+  <script>
+    const grayButton = document.querySelector('#grayButton')
+    grayButton.addEventListener(click, function() {
+      const bodyTag = document.querySelector('body')
+      bodyTag.setAttribute(background-color, gray)
+      bodyTag.setAttribute(color, white)
+    })
+    const whiteButton = document.querySelector('#whiteButton')
+    whiteButton.addEventListener(click, function() {
+      const bodyTag = document.querySelector('body')
+      bodyTag.setAttribute(background-color, white)
+      bodyTag.setAttribute(color, black)
+    })
+    const navyButton = document.querySelector('#navyButton')
+    navyButton.addEventListener(click, function() {
+      const bodyTag = document.querySelector('body')
+      bodyTag.setAttribute(background-color, navy)
+      bodyTag.setAttribute(color, white)
+    })
+  </script>
 </body>
 </html>
